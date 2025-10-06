@@ -1,0 +1,64 @@
+#Please provide source file details - Location to Pick file(FilePath, ex.- C:/Users/2086400/OneDrive - Cognizant/Desktop/PythonProgram/), FileName (Name.ext) and FileDeliminator (#",","\t","|",";")
+SOURCE_FILE_LOC: "C:/Users/U1002900/Desktop/python Code/DataHub_Validation_Opella/" 
+SOURCE_FILE_NAME: "SrcFile.csv" #"20240126_110052.HRMD_WD_PASAN_BasicFULL_PRD_20240126110000.csv_out"
+SOURCE_FILE_DELIM: ","
+
+#Please provide target file details - Location to Pick file(FilePath, ex.- C:/Users/2086400/OneDrive - Cognizant/Desktop/PythonProgram/), FileName (Name.ext) and FileDeliminator (#",","\t","|",";")
+TGT_FILE_LOC: "C:/Users/U1002900/Desktop/python Code/DataHub_Validation_Opella/" 
+TGT_FILE_NAME: "TgtFile.csv"
+TGT_FILE_DELIM: ","
+
+# Defined which type of reconciliation for file you want to enable
+#RECON_KEY_COLUMN: "" # Without Key Column 
+RECON_KEY_COLUMN: ['employee_id'] #["Employee ID"] #["Employee ID"] #["Employee Unique Number"] # # With Key Column 
+#RECON_KEY_COLUMN: [3] # If you know possition of column in file start from 0
+# File Type Identifier (0 menas all the file format excpet fixed lenght file without header)
+FILE_IDENTIFER: 0 # Deault, Suport all the file formats with/without header must have data seprator excpet fixed width file. 
+#FILE_IDENTIFER: 1 # For fixed width file with header/withour header 
+
+
+# Inclusion/Exclution of header as column name 
+TOP_HEADER: 0 # Default 0, First line consider as header column name, If pass N as integer than N row consider as header column name
+#TOP_HEADER: None # If None than first line not cosider as header, Auto create column name as (0-indexed) position (0,1,2,..N)
+
+# Skip N number of data rows of file from header
+ROWSKIP: 0 # Default 0 , No data row of file skip.
+#ROWSKIP: N # N is integer pass to skip N row from header
+
+# Skip N number of data rows of file from footer
+FOOT_SKIP: 0 # Default 0, No data row of file skip from footer.
+#FOOT_SKIP: N # N is integer pass to skip N row from footer
+
+# Include specific list of data columns for reconciliation 
+USECOLS:  None # Default None, Include all the columns of file
+#USECOLS: "['SSN','Gender']" # Only List of specific columns needs to reconciliate
+
+# Change the name of existing  header row column names.
+RENAME_FLAG: "N" # Y for you want to change the column name else N for no change in column name. 
+# If Y than below paramter is manadatory to pass.
+RENAME_COL_NAMES: "{'COMPANY':'CMP'}" #RENAME existing column name {Old_Col_Name:New_Col_Name}
+
+# Defined daty type of column as per need as dault none
+#DTYPE:None #Default None, Script consider dtype as based on value 
+DTYPE: {'employee_id': str} 
+ #{'SSN': str, 'Marital Code': str, 'Gender': str, 'Mobile Phone Number': str,'Date of Birth': str,'Date of Hire': str,'Date of Termination': str ,'Date of Rehire': str ,'Date of Net Credited Service': str,'Home Phone Number': str,'Work Phone Number': str}
+ #{'SocialInsuranceNumber': str,'ContinuesServiceDate': str,'HireDate': str} 
+ #{'SSN': str, 'Marital Code': str, 'Gender': str, 'Mobile Phone Number': str,'Date of Birth': str,'Date of Hire': str,'Date of Termination': str ,'Date of Rehire': str ,'Date of Net Credited Service': str,'Home Phone Number': str,'Work Phone Number': str} 
+ #{'Employee Unique Number': str} #{'Employee Unique Number': str, 'Ceridian Clock ID - MCF001': str} # 
+ #{'a': np.float64, 'b': np.int32, 'c': 'Int64'}, Change the dataype of specifc column or pass datatype force fully
+
+DF_DROP: "" #Default
+# Enable when list of columns wants to drop 
+#DF_DROP: ["EMPLOYER_ID"]
+#["Headcount Function - MCF004","Ceridian Clock ID - MCF001","Cost Center Description - MCF006","Date Effective"]
+#["Date Effective","Supervisor E-mail (Longer)"]
+#["Control Number", "Pseudonym"] #,"Last Name Suffix","Country Code"] #"Work Country", "work county" ,"Work Address 1","Work Address 2", "Work City", "Work State", "Work Postal Code","Mobile Phone Number","Home Phone Number","Work Phone Number","State","Fax Number","Work Phone Number Extension"
+#Relative location where you wan to generate report
+ERROR_REPORT1: "C:/Users/U1002900/Desktop/python Code/DataHub_Validation_Opella/Karrbath_Matched" # Matched_Records Report 
+ERROR_REPORT2: "C:/Users/U1002900/Desktop/python Code/DataHub_Validation_Opella/Karrbath_Non_Matched" # NonMatched_Records Report
+
+# Parameter for Fixed Width File 
+#Defined Fixed Lenght of each file as per requiremnt 
+COLSPECS: '[(0,6),(6,9),(9,18),(18,19),(19,49),(49,51),(51,59),(59,67),(67,75),(75,105),(105,135),(135,153),(153,156),(156,165),(165,176),(176,177),(177,178),(178,182),(182,189),(189,199),(199,207),(207,215),(215,223),(223,224),(224,235),(235,239),(239,371),(371,372),(372,373),(373,374),(374,375),(375,376),(376,386),(386,396),(396,404),(404,412),(412,428),(428,436),(436,486),(486,500),(500,580),(580,581),(581,583),(583,591),(591,599),(599,607),(607,618),(618,800),(800,808)]'
+NEW_COL_NAMES: "['PLAN' ,'RECORD_ID' ,'SSN' ,'TYPE' ,'NAME' ,'STATUS' ,'BIRTH DATE' ,'HIRE DATE' ,'FILLER' ,'ADDRESS 1' ,'ADDRESS 2' ,'CITY' ,'STATE' ,'ZIP CODE' ,'EMPLOYEE IDENTIFICATION' ,'KEY EMPLOYEE INDICATOR' ,'MARITAL STATUS' ,'FILLER1' ,'HOURS OF SERVICE' ,'FILLER2' ,'TERMINATION DATE' ,'FILLER3' ,'ELIGIBILITY DATE' ,'STATUS REASON CODE' ,'SALARY' ,'LOCATION' ,'FILLER4' ,'' ,'PAYROLL FREQUENCY' ,'FILLER5' ,'OFFICER' ,'FILLER6' ,'FILLER7' ,'FILLER8' ,'FILLER9' ,'ORIGINAL HIRE DATE' ,'FILLER10' ,'REHIRE DATE' ,'CONTINUES_SERVICE_DATE' ,'COMPANY_DESC' ,'E-MAIL ADDRESS' ,'EE TYPE' ,'EE STAT REASON' ,'LOA START DATE' ,'LOA END DATE' ,'MATCH ELIG DATE' ,'ANNUALIZED SALARY' ,'FILLER11' ,'TRAILER TOTAL']" #list of customize column name, usefull when file dosn't contain header column name
+
