@@ -1,10 +1,15 @@
-name: Firts Workflow 
-on: workflow_dispatch
+name: First Workflow
+
+on:
+  workflow_dispatch:
+
 jobs:
   first-job:
     runs-on: ubuntu-latest
-      run |
-      echo "Hellow World"
-      echo "Hellow picklu"
+    steps:
+      - name: Print messages
+        run: |
+          echo "Hello World"
+          echo "Hello Picklu"
      
   
